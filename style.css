@@ -52,6 +52,7 @@
   width: 150px;
   height: 150px;
 }
+
 .cloud:nth-child(4) {
   top: 225px;
   animation-delay: 20s;
