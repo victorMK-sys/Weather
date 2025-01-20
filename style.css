@@ -10,9 +10,9 @@
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 100vh;
-  padding-top: 150px;
+  min-height: 100vh;
   z-index: -2;
+  display: flex;
 }
 
 .page-wrapper .cloud {
@@ -69,8 +69,8 @@
 }
 
 .page-wrapper .weather-console {
-  width: 450px;
-  height: 50vh;
+  width: 50%;
+  height: 50%;
   margin: auto;
   border-radius: 10px;
   background: transparent;
@@ -78,30 +78,25 @@
   padding: 20px;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(1px);
-  color: orangered;
-}
-
-.weather-console .console-header {
+  color: lightblue;
   font-size: 32px;
 }
 
 .weather-console .console-body {
   width: 100%;
-  height: 250px;
-  margin: auto;
-  border-radius: 5px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.weather-console img {
-  width: 100px;
-  height: 100px;
-  font-size: 40px;
+.console-body .image-container {
+  width: 150px;
+  height: 150px;
 }
 
-.weather-console .console-temp {
-  color: orangered;
-  font-size: 80px;
+.text-container #current-temp {
+  font-size: 50px;
+  margin: 10px;
+  color: rgb(248, 235, 113);
 }

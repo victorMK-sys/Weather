@@ -2,38 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="page-wrapper">
-            <div class="cloud">
-                <img src="./images/cloud.png">
-            </div>
-            <div class="cloud">
-                <img src="./images/cloud.png">
-            </div>
-            <div class="cloud">
-                <img src="./images/cloud.png">
-            </div>
-            <div class="cloud">
-                <img src="./images/cloud.png">
-            </div>
-        <div class="weather-console">
-            <div class="console-header">
-                <h3>12th January, 2024</h3>
-            </div>
-            <div class="console-body">
-                <img src="" alt="img">
-                <p class="console-temp">16deg</p>
-            </div>
-        </div>
-    </div>
+	<div class="page-wrapper">
+		<div class="cloud">
+			<img src="./images/cloud.png">
+		</div>
+		<div class="cloud">
+			<img src="./images/cloud.png">
+		</div>
+		<div class="cloud">
+			<img src="./images/cloud.png">
+		</div>
+		<div class="cloud">
+			<img src="./images/cloud.png">
+		</div>
+		<div class="weather-console">
+			<div class="console-header">
+				<h3 id="currentDate"></h3>
+			</div>
+			<div class="console-body">
+				<div class="image-container">
+					<img src="">
+				</div>
+				<div class="text-container">
+					<p id="current-temp">16deg</p>
+					<p id="current-time">14:30:54</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <script src="app.js"></script>
+	<script src="app.js"></script>
 </body>
 
 </html>
