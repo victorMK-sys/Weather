@@ -17,9 +17,8 @@ async function getWeather(dateCallback, weatherCallback) {
     const data = await response.json()
     const timeStamp = data.dt * 1000
 
-    // dateCallback(timeStamp)
-    // weatherCallback(data)
-    console.log(data)
+    dateCallback(timeStamp)
+    weatherCallback(data)
   } catch (error) {
     console.error('Failed to fetch weather data:', error)
   }
