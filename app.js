@@ -57,7 +57,7 @@ function formatWeather(data) {
   const temperature = data.main.temp
 
   document.getElementById('currentWeather').textContent = `${temperature}°C`
-  document.getElementById('cityName').textContent = data.name
+  document.getElementById('cityName').textContent = `${data.name}, ${data.sys.country}`
 }
 
 function formatIcon() {
