@@ -5,110 +5,73 @@
 }
 
 .page-wrapper {
-  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
   background: url(./images/main/sky.jpg), no-repeat;
   background-position: center;
   background-size: cover;
-  width: 100%;
-  min-height: 100vh;
-  z-index: -2;
-  display: flex;
-}
-
-.page-wrapper .cloud {
-  position: absolute;
-  z-index: -1;
-  left: -200px;
-  /* animation: move-cloud 40s linear infinite; */
-}
-
-.page-wrapper .cloud:nth-child(1) {
-  top: 100px;
-  opacity: .75;
-}
-
-.page-wrapper .cloud:nth-child(1) img {
-  width: 150px;
-  height: 150px;
-}
-
-.page-wrapper .cloud:nth-child(2) {
-  animation-delay: 7s;
-  opacity: .5;
-  top: 100px;
-}
-
-.page-wrapper .cloud:nth-child(2) img {
-  height: 75px;
-  width: 75px;
-}
-
-.page-wrapper .cloud:nth-child(3) {
-  top: 20px;
-  animation-delay: 12s;
-}
-
-.page-wrapper .cloud:nth-child(3) img {
-  width: 150px;
-  height: 150px;
-}
-
-.page-wrapper .cloud:nth-child(4) {
-  top: 225px;
-  animation-delay: 20s;
-}
-
-.page-wrapper .cloud:nth-child(4) img {
-  width: 150px;
-  height: 150px;
-}
-
-@keyframes move-cloud {
-  100% {
-    left: 1400px;
-  }
 }
 
 .page-wrapper .weather-console {
   margin: auto;
   padding: 20px;
-  border-radius: 10px;
-  text-align: center;
   background: rgba(0, 0, 0, 0.65);
   color: lightblue;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.weather-console .search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container #searchInput {
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font: normal 500 15px 'Courier New', Courier, monospace;
+}
+
+.search-container #searchButton {
+  background: rgb(248, 235, 113);
+  height: 40px;
+  margin-left: -4px;
+  padding: 5px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  font: normal 600 15px 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+#searchButton:hover {
+  background: rgb(255, 247, 0);
 }
 
 .weather-console .console-body {
-  height: 280px;
+  height: 200px;
   display: flex;
   align-items: center;
+}
+
+.weatherIcon {
+  width: 150px;
+  height: 150px;
   margin: 10px;
 }
 
-.console-body .image-container {
-  padding: 10px;
-}
-
-.image-container img {
-  width: 150px;
-  height: 150px;
-}
-
 .offline-image {
-  width: 300px;
-  height: 300px;
-}
-
-.offline-text {
-  font-size: 15px;
-}
-
-.console-body .text-container {
-  text-align: center;
+  width: 250px;
+  height: 250px;
 }
 
 .text-container #currentWeather {
-  font-size: 57px;
-  padding: 5px;
+  font: normal 600 50px 'Courier New', Courier, monospace;
   color: rgb(248, 235, 113);
 }
