@@ -1,7 +1,6 @@
 const weatherConsole = document.querySelector('.weather-console')
 const searchInput = document.getElementById('searchInput')
 
-
 function init() {
   const API_KEY = '50dfacd827bba21242f91d2f77e2ef98'
   let apiURL
@@ -57,7 +56,8 @@ function formatWeather(data) {
   const temperature = data.main.temp
 
   document.getElementById('currentWeather').textContent = `${temperature}°C`
-  document.getElementById('cityName').textContent = data.name
+  document.getElementById('cityName').textContent = (`${data.name}, ${data.sys.country}`)
+
 }
 
 function formatIcon() {
@@ -81,4 +81,8 @@ window.addEventListener('load', () => {
 
 document.querySelector('#searchButton').addEventListener('click', () => {
   init()
+})
+
+document.querySelector('body').addEventListener('keydown', (event) => {
+  if((searchInput.value.length > 0) && (event.key == 'Enter')) init()
 })
