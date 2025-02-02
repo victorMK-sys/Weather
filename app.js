@@ -28,16 +28,6 @@ async function getWeather(apiURL) {
     if (response.ok) {
       const data = await response.json()
       const timeStamp = data.dt * 1000
-    if (response.ok) {
-      const data = await response.json()
-      const timeStamp = data.dt * 1000
-
-      formatDate(timeStamp)
-      formatWeather(data)
-      return
-    }
-    if (response.status == '401') throw new Error('401')
-    if (response.status == '404') throw new Error('404')
 
       formatDate(timeStamp)
       formatWeather(data)
@@ -50,12 +40,7 @@ async function getWeather(apiURL) {
     if (error.message == '401') offline('There might be a problem on our end. Please try again later')
     if (error.message == '404') alert('The city/country entered does not exist')
     return
-    if (error.message == '401') offline('There might be a problem on our end. Please try again later')
-    if (error.message == '404') alert('The city/country entered does not exist')
-    return
   }
-
-  offline('You are offline. Please check your connection and try again')
 
   offline('You are offline. Please check your connection and try again')
 }
@@ -64,7 +49,6 @@ function formatDate(timeStamp) {
   const date = new Date(timeStamp)
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
-  document.getElementById('currentDate').textContent = date.toLocaleString(undefined, options)
   document.getElementById('currentDate').textContent = date.toLocaleString(undefined, options)
 }
 
@@ -77,11 +61,8 @@ function formatWeather(data) {
 }
 
 function formatIcon() {
-function formatIcon() {
 }
 
-function offline(message) {
-  let rmv = [...weatherConsole.children]
 function offline(message) {
   let rmv = [...weatherConsole.children]
   rmv.forEach((el) => el.remove())
@@ -89,9 +70,6 @@ function offline(message) {
   offlineImage.src = './images/main/offline-image.png'
   offlineImage.classList.add('offline-image')
   const offlineText = document.createElement('p')
-  offlineText.textContent = message
-  weatherConsole.appendChild(offlineImage)
-  weatherConsole.appendChild(offlineText)
   offlineText.textContent = message
   weatherConsole.appendChild(offlineImage)
   weatherConsole.appendChild(offlineText)
