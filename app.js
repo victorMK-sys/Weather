@@ -1,8 +1,10 @@
+require('dotenv').config()
+
 const weatherConsole = document.querySelector('.weather-console')
 const searchInput = document.getElementById('searchInput')
 
 function init() {
-  const API_KEY = '50dfacd827bba21242f91d2f77e2ef98'
+  const API_KEY = process.env.API_KEY
   let apiURL
 
   if (searchInput.value !== '') {
