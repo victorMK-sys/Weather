@@ -1,23 +1,22 @@
-require('dotenv').config()
+import { WEATHER_API_KEY } from "./index.js"
 
 const weatherConsole = document.querySelector('.weather-console')
 const searchInput = document.getElementById('searchInput')
 
 function init() {
-  const API_KEY = process.env.API_KEY
   let apiURL
 
   if (searchInput.value !== '') {
     let city = searchInput.value
     searchInput.value = ''
-    apiURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${API_KEY}&q=${city}`
+    apiURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${WEATHER_API_KEY}&q=${city}`
     getWeather(apiURL)
   } else {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
-        apiURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${API_KEY}&lat=${lat}&lon=${lon}`
+        apiURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${WEATHER_API_KEY}&lat=${lat}&lon=${lon}`
         getWeather(apiURL)
       })
     }
@@ -81,10 +80,10 @@ window.addEventListener('load', () => {
   init()
 })
 
-document.querySelector('#searchButton').addEventListener('click', () => {
-  init()
-})
+// document.querySelector('#searchButton').addEventListener('click', () => {
+//   init()
+// })
 
-document.querySelector('body').addEventListener('keydown', (event) => {
-  if((searchInput.value.length > 0) && (event.key == 'Enter')) init()
-})
+// document.querySelector('body').addEventListener('keydown', (event) => {
+//   if((searchInput.value.length > 0) && (event.key == 'Enter')) init()
+// })
