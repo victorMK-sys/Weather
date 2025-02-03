@@ -28,10 +28,10 @@ async function getWeather(apiURL) {
     const response = await fetch(apiURL)
     if (response.ok) {
       const data = await response.json()
-      const timeStamp = data.dt * 1000
+      const imgsrc = formatIcon(data.weather)
+      console.log(data)
 
-      formatDate(timeStamp)
-      formatWeather(data)
+      formatWeather(data, imgsrc)
       return
     }
     if (response.status == '401') throw new Error('401')
@@ -39,29 +39,46 @@ async function getWeather(apiURL) {
 
   } catch (error) {
     if (error.message == '401') offline('There might be a problem on our end. Please try again later')
-    if (error.message == '404') alert('The city/country entered does not exist')
+    if (error.message == '404') alert('The city entered does not exist')
     return
   }
 
   offline('You are offline. Please check your connection and try again')
 }
 
-function formatDate(timeStamp) {
-  const date = new Date(timeStamp)
-  const options = { year: 'numeric', month: 'long', day: 'numeric' }
-
-  document.getElementById('currentDate').textContent = date.toLocaleString(undefined, options)
-}
-
-function formatWeather(data) {
+function formatWeather(data, imgsrc) {
   const temperature = data.main.temp
 
+  document.getElementById('weatherIcon').src = imgsrc
   document.getElementById('currentWeather').textContent = `${temperature}°C`
   document.getElementById('cityName').textContent = (`${data.name}, ${data.sys.country}`)
 
 }
 
-function formatIcon() {
+function formatIcon(weather) {
+  let weatherMain = weather[0].main
+  let weatherDescr = weather[0].description
+  let imgsrc = './images/'
+
+  switch (weatherMain) {
+    case ("Sun" || "Clear"): imgsrc += 'sunny.png'
+      break
+    case "Clouds":
+      if (weatherDescr == 'over-cast') imgsrc += 'over-cast.png'
+      else imgsrc += 'clear-sky.png'
+      break
+    case "Rain":
+      if (weatherDescr == 'storm') imgsrc += 'storm.png'
+      else imgsrc += 'moderate-rain.png'
+      break
+    case "Snow": imgsrc += 'snow.png'
+      break
+    case "Fog": imgsrc += 'fog.png'
+      break
+    default: imgsrc += 'windy.png'
+  }
+
+  return imgsrc
 }
 
 function offline(message) {
@@ -80,10 +97,10 @@ window.addEventListener('load', () => {
   init()
 })
 
-// document.querySelector('#searchButton').addEventListener('click', () => {
-//   init()
-// })
+document.querySelector('#searchButton').addEventListener('click', () => {
+  init()
+})
 
-// document.querySelector('body').addEventListener('keydown', (event) => {
-//   if((searchInput.value.length > 0) && (event.key == 'Enter')) init()
-// })
+document.querySelector('body').addEventListener('keydown', (event) => {
+  if ((searchInput.value.length > 0) && (event.key == 'Enter')) init()
+})
