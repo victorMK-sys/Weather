@@ -61,7 +61,9 @@ function formatIcon(weather) {
   let imgsrc = './images/'
 
   switch (weatherMain) {
-    case ("Sun" || "Clear"): imgsrc += 'sunny.png'
+    case 'Sunny': imgsrc += 'sunny.png'
+      break
+    case "Clear": imgsrc+='sunny.png'
       break
     case "Clouds":
       if (weatherDescr == 'over-cast') imgsrc += 'over-cast.png'
@@ -74,6 +76,8 @@ function formatIcon(weather) {
     case "Snow": imgsrc += 'snow.png'
       break
     case "Fog": imgsrc += 'fog.png'
+      break
+    case "Mist": imgsrc += 'mist.png'
       break
     default: imgsrc += 'windy.png'
   }
